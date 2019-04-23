@@ -13,6 +13,9 @@ var app = new Vue({
       return this.items.filter(item => item.title.toLowerCase().startsWith(this.findTitle.toLowerCase()));
     }
   },
+  created () {
+    this.getItems();
+  },
   methods: {
     fileChanged(event) {
     this.file = event.target.files[0]
@@ -65,9 +68,6 @@ var app = new Vue({
       } catch (error) {
         console.log(error);
       }
-    },
-  },
-  created () {
-    this.getItems();
-  },
+    }
+  }
 });

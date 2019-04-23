@@ -87,16 +87,17 @@ app.delete('/api/items/:id', async (req, res) => {
 app.put('/api/items:id', async(req, res) => {
   try {
     let item = await Item.findOne({
-      _id: req.params.id
-    })
+      _id: req.params.id,
+    });
     item.title = req.body.title;
     /*item.description = req.body.description;*/
-    item.save();
+    await item.save();
     res.sendStatus(200);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
   }
 });
+
 
 app.listen(3000, () => console.log('Server listening on port 3000!'));
